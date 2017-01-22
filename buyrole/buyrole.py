@@ -32,7 +32,7 @@ class Buyrole:
         self.settings_dict = dataIO.load_json(self.settings_loc)
 
     @commands.command(pass_context=True, aliases=['requestrole'], no_pm=True)
--    async def buyrole(self, ctx, *, role: discord.Role = None):
+    async def buyrole(self, ctx, *, role: discord.Role = None):
         """Buy roles with economy credits,
         To see the list of roles you can buy use ``buyrole``"""
         server = ctx.message.server
