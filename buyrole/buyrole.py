@@ -80,7 +80,7 @@ class Buyrole:
             self.settings_dict[server.id]['roles'][role.id]['price'] = price
         else:
             self.settings_dict[server.id]['roles'][role.id] = {'price': price, 'uniquegroup': 0}
-            await self.bot.say('{0} added to the buyrole list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
+            await self.bot.say('{0} added to the games list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
         self.save_json()
 
     @games.command(pass_context=True, no_pm=True)
@@ -127,7 +127,7 @@ class Buyrole:
         GroupID 0 will not be considered unique and can share other roles."""
         server = ctx.message.server
         if role.id not in self.settings_dict[server.id]['roles']:
-            await self.bot.say('This role ins\'t in the buyrole list')
+            await self.bot.say('This role ins\'t in the games list')
         elif groupid < 0:
             await self.bot.say('The group ID cannot be negative.')
         else:
