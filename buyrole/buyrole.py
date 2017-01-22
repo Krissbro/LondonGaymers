@@ -32,9 +32,9 @@ class Buyrole:
         self.settings_dict = dataIO.load_json(self.settings_loc)
 
     @commands.command(pass_context=True, aliases=['requestrole'], no_pm=True)
-    async def buyrole(self, ctx, *, role: discord.Role = None):
-        """Buy roles with economy credits,
-        To see the list of roles you can buy use ``buyrole``"""
+    async def games(self, ctx, *, role: discord.Role = None):
+        """Add Game-based roles,
+        To see the list of roles you can buy use ``games``"""
         server = ctx.message.server
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
@@ -58,8 +58,8 @@ class Buyrole:
 
     @commands.group(pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_roles=True)
-    async def buyroleset(self, ctx):
-        """Manage buyrole"""
+    async def gameset(self, ctx):
+        """Manage games"""
         if 'Economy' not in self.bot.cogs:
             raise RuntimeError('The Economy cog needs to be loaded for this cog to work')
         server = ctx.message.server
@@ -69,9 +69,9 @@ class Buyrole:
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
 
-    @buyroleset.command(pass_context=True, no_pm=True, aliases=['edit'])
+    @gameset.command(pass_context=True, no_pm=True, aliases=['edit'])
     async def add(self, ctx, role: discord.Role, price: int):
-        """Add a role for users to buy"""
+        """Add a role for users to choose"""
         server = ctx.message.server
         if price < 0:
             await self.bot.say('The price cannot be below 0. To make it free use 0 as the price.')  # In command error handling, no excetion due the rarity.
@@ -83,9 +83,9 @@ class Buyrole:
             await self.bot.say('{0} added to the buyrole list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
         self.save_json()
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @gameset.command(pass_context=True, no_pm=True)
     async def remove(self, ctx, role: discord.Role):
-        """Remove a role for users to buy"""
+        """Remove a role for users to choose"""
         server = ctx.message.server
         try:
             del self.settings_dict[server.id]['roles'][role.id]
@@ -94,11 +94,11 @@ class Buyrole:
         except:
             await self.bot.say('This role isn\'t in the list.')
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @gameset.command(pass_context=True, no_pm=True)
     async def toggle(self, ctx, toggle: bool):
-        """Open or close the buyrole shop
+        """Open or close the games list
         Use either True or False
-        buyroleset toggle true"""
+        gameset toggle true"""
         server = ctx.message.server
         if toggle is True:
             if self.settings_dict[server.id]['toggle'] is True:
@@ -117,7 +117,7 @@ class Buyrole:
         else:
             raise Exception('InvalidToggle')
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @gameset.command(pass_context=True, no_pm=True)
     async def uniquegroup(self, ctx, role: discord.Role, groupid: int):
         """Set a role to a unique group ID,
         This means that a user cannot have more then one role from the same group.
@@ -137,9 +137,9 @@ class Buyrole:
             else:
                 await self.bot.say('Unique Group ID set. {} will now be unique in group ID {}'.format(role.name, groupid))
 
-    @buyroleset.command(pass_context=True, no_pm=True, aliases=['color'])
+    @gameset.command(pass_context=True, no_pm=True, aliases=['color'])
     async def colour(self, ctx, colour: discord.Colour):
-        """Set the sidebar colour in the buyrole list."""
+        """Set the sidebar colour in the games list."""
         server = ctx.message.server
         self.settings_dict[server.id]['colour'] = colour.value
         self.save_json()
