@@ -31,10 +31,11 @@ class Buyrole:
         self.settings_loc = 'data/buyrole/settings.json'
         self.settings_dict = dataIO.load_json(self.settings_loc)
 
-    @commands.command(pass_context=True, aliases=['requestrole'], no_pm=True)
+    @commands.command(pass_context=True, aliases=['iplay'], no_pm=True)
     async def games(self, ctx, *, role: discord.Role = None):
         """Add Game-based roles,
-        To see the list of roles you can buy use ``games``"""
+        To see the list of roles you can buy use ``games``
+		If using iplay, must be Case sensitive!"""
         server = ctx.message.server
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
