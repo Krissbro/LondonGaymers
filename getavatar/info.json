@@ -1,0 +1,5 @@
+ "AUTHOR" : "Krissbro",
+    "INSTALL_MSG" : "Thanks for installing the getavatar cog. use [p]getavatar to start",
+    "NAME" : "Avatar",
+    "SHORT" : "A command to pull a users avatar",
+    "DESCRIPTION" : "Avatar command"
