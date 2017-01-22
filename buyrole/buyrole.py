@@ -32,20 +32,14 @@ class Buyrole:
         self.settings_dict = dataIO.load_json(self.settings_loc)
 
     @commands.command(pass_context=True, aliases=['requestrole'], no_pm=True)
-    async def buyrole(self, ctx, *, role: str = None):
-        """Buy roles with economy credits,
-        To see the list of roles you can buy use ``buyrole``"""
+    async def games(self, ctx, *, role: discord.Role = None):
+        """Join game roles,
+        To see the list of roles you can join use ``games``"""
         server = ctx.message.server
-        str_role = role
-        role = discord.utils.get(server.roles, name=str_role)
-        if role is None:
-            await self.bot.say('I cannot find the role you\'re trying to buy.\n'
-                               'Please make sure that you\'ve capitalised the role name.')
-            return
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
         elif role in ctx.message.author.roles:
-            await self.bot.say('You already own this role.')
+            await self.bot.say('You already have this role.')
         elif 'Economy' not in self.bot.cogs:
             await self.bot.say('Economy isn\'t loaded. Please load economy.')
         elif role is None:
@@ -56,16 +50,16 @@ class Buyrole:
         else:
             try:
                 await self._process_role(server, ctx.message.author, role, False)
-                await self.bot.say('Done! You\'re now the proud owner of {}'.format(role.name))
+                await self.bot.say(':ok_hand: You\'re now a member of {}'.format(role.name))
             except InvalidRole:
-                await self.bot.say('This role cannot be bought')
+                await self.bot.say('This role isn\'t available.')
             except InsufficientBalance:
                 await self.bot.say('You do not have enough balance to buy this role')
 
     @commands.group(pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_roles=True)
-    async def buyroleset(self, ctx):
-        """Manage buyrole"""
+    async def gameset(self, ctx):
+        """Manage games"""
         if 'Economy' not in self.bot.cogs:
             raise RuntimeError('The Economy cog needs to be loaded for this cog to work')
         server = ctx.message.server
@@ -75,9 +69,9 @@ class Buyrole:
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
 
-    @buyroleset.command(pass_context=True, no_pm=True, aliases=['edit'])
+    @games.command(pass_context=True, no_pm=True, aliases=['edit'])
     async def add(self, ctx, role: discord.Role, price: int):
-        """Add a role for users to buy"""
+        """Add a role for users to choose"""
         server = ctx.message.server
         if price < 0:
             await self.bot.say('The price cannot be below 0. To make it free use 0 as the price.')  # In command error handling, no excetion due the rarity.
@@ -89,42 +83,42 @@ class Buyrole:
             await self.bot.say('{0} added to the buyrole list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
         self.save_json()
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @games.command(pass_context=True, no_pm=True)
     async def remove(self, ctx, role: discord.Role):
-        """Remove a role for users to buy"""
+        """Remove a role for users to choose"""
         server = ctx.message.server
         try:
             del self.settings_dict[server.id]['roles'][role.id]
             self.save_json()
-            await self.bot.say('Removed {} from the buyrole list.'.format(role.name))
+            await self.bot.say('Removed {} from the games list.'.format(role.name))
         except:
             await self.bot.say('This role isn\'t in the list.')
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @games.command(pass_context=True, no_pm=True)
     async def toggle(self, ctx, toggle: bool):
-        """Open or close the buyrole shop
+        """Open or close the games options
 
         Use either True or False
-        buyroleset toggle true"""
+        games toggle true"""
         server = ctx.message.server
         if toggle is True:
             if self.settings_dict[server.id]['toggle'] is True:
-                await self.bot.say('The shop is already enabled')
+                await self.bot.say('The list is already enabled')
             else:
                 self.settings_dict[server.id]['toggle'] = True
                 self.save_json()
-                await self.bot.say('The shop has been enabled.')
+                await self.bot.say('The list has been enabled.')
         elif toggle is False:
             if self.settings_dict[server.id]['toggle'] is False:
-                await self.bot.say('The shop is already disabled')
+                await self.bot.say('The list is already disabled')
             else:
                 self.settings_dict[server.id]['toggle'] = False
                 self.save_json()
-                await self.bot.say('The shop has been disabled')
+                await self.bot.say('The list has been disabled')
         else:
             raise Exception('InvalidToggle')
 
-    @buyroleset.command(pass_context=True, no_pm=True)
+    @games.command(pass_context=True, no_pm=True)
     async def uniquegroup(self, ctx, role: discord.Role, groupid: int):
         """Set a role to a unique group ID,
         This means that a user cannot have more then one role from the same group.
@@ -145,9 +139,9 @@ class Buyrole:
             else:
                 await self.bot.say('Unique Group ID set. {} will now be unique in group ID {}'.format(role.name, groupid))
 
-    @buyroleset.command(pass_context=True, no_pm=True, aliases=['color'])
+    @games.command(pass_context=True, no_pm=True, aliases=['color'])
     async def colour(self, ctx, colour: discord.Colour):
-        """Set the sidebar colour in the buyrole list."""
+        """Set the sidebar colour in the games list."""
         server = ctx.message.server
         self.settings_dict[server.id]['colour'] = colour.value
         self.save_json()
@@ -164,7 +158,7 @@ class Buyrole:
             colour = 0x72198b
         else:
             colour = self.settings_dict[server.id]['colour']
-        embed = discord.Embed(description='**Role list:**', colour=colour)
+        embed = discord.Embed(title='**Game list:**', description='Type ?iplay then a role name to join that role. You can then tag these roles when looking for someone to play a game with.', footer='', colour=colour)
         for roleid, roledata in self.settings_dict[server.id]['roles'].items():
             role = discord.utils.get(server.roles, id=roleid)
             if not role:
@@ -177,9 +171,9 @@ class Buyrole:
 
     def _price_string(self, price, punctuation: bool):
         if price == 0 and punctuation is True:
-            return "Free!"
+            return ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: "
         elif price == 0 and punctuation is False:
-            return "free"
+            return ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: "
         else:
             return str(price)
 
@@ -195,7 +189,7 @@ class Buyrole:
         if server.id not in self.settings_dict:
             raise Exception('Shop is not setup')
         elif role.id not in self.settings_dict[server.id]['roles']:
-            raise InvalidRole('This role cannot be bought.')
+            raise InvalidRole('You can\'t have this role!')
         else:
             role_dict = self.settings_dict[server.id]['roles'][role.id]
             role_list = []
