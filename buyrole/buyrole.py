@@ -35,13 +35,6 @@ class Buyrole:
     async def games(self, ctx, *, role: str = None):
         """Join game-related roles on the server. 
 		to see a list roles type ``games``"""
-        server = ctx.message.server
-        str_role = role
-        role = discord.utils.get(server.roles, name=str_role)
-        if role is None:
-            await self.bot.say('I cannot find the role you\'re trying to join.\n'
-                               'Please make sure that you\'ve capitalised the role name.')
-            return
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
         elif role in ctx.message.author.roles:
