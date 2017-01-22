@@ -35,7 +35,7 @@ class Buyrole:
     async def games(self, ctx, *, role: discord.Role = None):
         """Add Game-based roles,
         To see the list of roles you can buy use ``games``
-		If using iplay, must be Case sensitive!"""
+		Role choice must be Case sensitive!"""
         server = ctx.message.server
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
