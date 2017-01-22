@@ -46,7 +46,7 @@ class embed:
             em.set_footer(text="This is a footer")
             await self.bot.send_message(ctx.message.author, embed=em)
             await self.bot.send_message(ctx.message.author, "And,")
-            await self.bot.send_message(ctx.message.author, "@everyone @here, announcement!")
+            await self.bot.send_message(ctx.message.author, "@here, announcement!")
             em = discord.Embed(description="This is a description", color=discord.Color.red(), title="This is a title")
             avatar = ctx.message.author.avatar_url
             author = ctx.message.author.name
@@ -175,7 +175,7 @@ class embed:
             author = ctx.message.author.name
             em.set_author(name=author, icon_url=avatar)
             em.set_footer(text=footer)
-            await self.bot.say("@everyone, @here, announcement!", embed=em)
+            await self.bot.say("@here, announcement!", embed=em)
             return
         except discord.NotFound:
             await self.bot.say("Couldn't find the message to embed, did it get deleted?")
