@@ -156,7 +156,7 @@ class Buyrole:
             colour = 0x72198b
         else:
             colour = self.settings_dict[server.id]['colour']
-        embed = discord.Embed(description='**Role list:**', colour=colour)
+        embed = discord.Embed(description='**Games list. Type ?iplay to join a role!**', colour=colour)
         for roleid, roledata in self.settings_dict[server.id]['roles'].items():
             role = discord.utils.get(server.roles, id=roleid)
             if not role:
@@ -169,9 +169,9 @@ class Buyrole:
 
     def _price_string(self, price, punctuation: bool):
         if price == 0 and punctuation is True:
-            return "Free!"
+            return ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: "
         elif price == 0 and punctuation is False:
-            return "free"
+            return ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: "
         else:
             return str(price)
 
