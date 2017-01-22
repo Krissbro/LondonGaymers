@@ -43,7 +43,7 @@ except:
         pyshortenersinstalled = False
 
 class Useful:
-    """Useful stuffz!"""
+    """Useful stuffz"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -53,7 +53,6 @@ class Useful:
     async def _calc(self, ctx, evaluation):
         """Solves a math problem so you don't have to!
         + = add, - = subtract, * = multiply, and / = divide
-
         Example:
         [p]calc 1+1+3*4"""
         prob = re.sub("[^0-9+-/* ]", "", ctx.message.content[len(ctx.prefix + "calc "):].strip())
@@ -65,7 +64,7 @@ class Useful:
 
     @commands.command(pass_context=True)
     async def suggest(self, ctx, *, suggestion : str):
-        """Sends a suggestion to the owner."""
+        """Sends a suggestion to the team."""
         if settings.owner == "id_here":
             await self.bot.say("I have no owner set, cannot suggest.")
             return
@@ -89,11 +88,6 @@ class Useful:
             await self.bot.say("I'm unable to deliver your message. Sorry.")
         else:
             await self.bot.say("Your message has been sent.")
-
-    @commands.command(pass_context=True)
-    async def botowner(self, ctx):
-        """Shows you who's boss!"""
-        await self.bot.say("My owner is <@{}>.".format(settings.owner))
             
     @commands.command(pass_context=True)
     @checks.is_owner()
@@ -113,7 +107,7 @@ class Useful:
     async def shorten(self, ctx, url):
         """Shorten a link."""
         await self.bot.say("{}, here you go <{}>.".format(ctx.message.author.mention, self.short(url)))
-        
+
     @commands.command()
     async def ctof(self, celsius:float):
         """Convert celsius to fahrenheit."""
