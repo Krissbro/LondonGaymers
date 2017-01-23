@@ -20,7 +20,7 @@ class InsufficientBalance(Exception):
     pass
 
 
-class Buyrole:
+class Games:
     """Allows the user to buy a role with economy balance"""
 
     __author__ = "Kowlin"
@@ -81,7 +81,7 @@ class Buyrole:
             self.settings_dict[server.id]['roles'][role.id]['price'] = price
         else:
             self.settings_dict[server.id]['roles'][role.id] = {'price': price, 'uniquegroup': 0}
-            await self.bot.say('{0} added to the buyrole list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
+            await self.bot.say('{0} added to the games list. The price of {0} is now {1}.'.format(role.name, self._price_string(price, False)))
         self.save_json()
 
     @gameset.command(pass_context=True, no_pm=True)
@@ -91,7 +91,7 @@ class Buyrole:
         try:
             del self.settings_dict[server.id]['roles'][role.id]
             self.save_json()
-            await self.bot.say('Removed {} from the buyrole list.'.format(role.name))
+            await self.bot.say('Removed {} from the games list.'.format(role.name))
         except:
             await self.bot.say('This role isn\'t in the list.')
 
@@ -126,7 +126,7 @@ class Buyrole:
         GroupID 0 will not be considered unique and can share other roles."""
         server = ctx.message.server
         if role.id not in self.settings_dict[server.id]['roles']:
-            await self.bot.say('This role ins\'t in the buyrole list')
+            await self.bot.say('This role ins\'t in the games list')
         elif groupid < 0:
             await self.bot.say('The group ID cannot be negative.')
         else:
@@ -226,5 +226,5 @@ def check_file():
 def setup(bot):
     check_folder()
     check_file()
-    n = Buyrole(bot)
+    n = Games(bot)
     bot.add_cog(n)
