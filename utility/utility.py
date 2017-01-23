@@ -80,6 +80,7 @@ class Utility:
         except:
             await self.bot.say("**This server has no facking emotes what is this a ghost town ???**")
     @commands.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def roles(self, ctx):
         """States roles from highest to lowest"""
 
