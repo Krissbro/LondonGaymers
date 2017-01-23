@@ -35,7 +35,6 @@ class RandImage:
         return ret
 
     @commands.command(pass_context=True, no_pm=True, name="randimage")
-    @checks.mod_or_permissions(Administrator=True)
     async def _randimage(self, ctx: commands.Context, category: str):
         """Chooses a random image from the given category and sends it."""
 
