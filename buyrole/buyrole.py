@@ -32,7 +32,7 @@ class Buyrole:
         self.settings_dict = dataIO.load_json(self.settings_loc)
 
     @commands.command(pass_context=True, aliases=['iplay'], no_pm=True,)
-    async def games(self, ctx, *, role: discord.Role = None, discord.role.lower()):
+    async def games(self, ctx, *, role: discord.Role = None ):
         """Add Game-based roles,
         To see the list of roles you can select use ``games``
 		Role choice must be Case sensitive!"""
