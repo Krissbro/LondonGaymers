@@ -38,6 +38,7 @@ class Trigger:
         self.stats_task = bot.loop.create_task(self.save_stats())
 
     @commands.group(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def trigger(self, ctx):
         """Trigger creation commands"""
         if ctx.invoked_subcommand is None:
@@ -159,6 +160,7 @@ class Trigger:
             pass
 
     @trigger.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def info(self, ctx, trigger_name : str):
         """Shows a trigger's info"""
         trigger = self.get_trigger_by_name(trigger_name)
@@ -184,6 +186,7 @@ class Trigger:
             await self.bot.say("There is no trigger with that name.")
 
     @trigger.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def show(self, ctx, trigger_name : str):
         """Shows all responses of a trigger"""
         trigger = self.get_trigger_by_name(trigger_name)
@@ -202,6 +205,7 @@ class Trigger:
             await self.bot.say("That trigger doesn't exist.")
 
     @trigger.command(name="list", pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def _list(self, ctx, trigger_type="local"):
         """Lists local / global triggers
 
@@ -226,6 +230,7 @@ class Trigger:
             await self.bot.say("I couldn't find any trigger of that type.")
 
     @trigger.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def search(self, ctx, *, search_terms : str):
         """Returns triggers matching the search terms"""
         result = self.search_triggers(search_terms.lower())
@@ -243,6 +248,7 @@ class Trigger:
             await self.bot.send_cmd_help(ctx)
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def cooldown(self, ctx, trigger_name : str, seconds : int):
         """Sets the trigger's cooldown"""
         author = ctx.message.author
@@ -256,6 +262,7 @@ class Trigger:
         await self.bot.say("Cooldown set to {} seconds.".format(seconds))
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def phrase(self, ctx, trigger_name : str, *, triggered_by : str):
         """Sets the word/phrase by which the trigger is activated by"""
         author = ctx.message.author
@@ -271,6 +278,7 @@ class Trigger:
                            "".format(triggered_by))
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def response(self, ctx, trigger_name : str, _type : str):
         """Sets the response type for the trigger.
 
@@ -291,7 +299,7 @@ class Trigger:
         await self.bot.say("Response type set to {}.".format(_type))
 
     @triggerset.command(pass_context=True)
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def influence(self, ctx, trigger_name : str, _type : str):
         """Sets the influence of the trigger.
 
@@ -310,6 +318,7 @@ class Trigger:
         await self.bot.say("Influence set to {}.".format(_type))
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def casesensitive(self, ctx, trigger_name : str,
                             true_or_false : bool):
         """Toggles the trigger's case sensitivity.
@@ -324,6 +333,7 @@ class Trigger:
         await self.bot.say("Case sensitivity set to {}.".format(true_or_false))
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def regex(self, ctx, trigger_name : str, true_or_false : bool):
         """Toggles the trigger's case capabilities.
 
@@ -337,6 +347,7 @@ class Trigger:
         await self.bot.say("Regex set to {}.".format(true_or_false))
 
     @triggerset.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def active(self, ctx, trigger_name : str, true_or_false : bool):
         """Toggles the trigger on/off.
 
