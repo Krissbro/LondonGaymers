@@ -10,7 +10,7 @@ class WhoPlays:
 
     @commands.command(pass_context=True, no_pm=True)
     async def whoisplaying(self, ctx, *, game):
-        """Shows a list of all the people playing a game. Type whoisplaying followed by the game name to see who is playing that game!"""
+        """See who is playing a specific game."""
         if len(game) <= 2:
             await self.bot.say("You need at least 3 characters.")
             return     
@@ -35,7 +35,7 @@ class WhoPlays:
 
     @commands.command(pass_context=True, no_pm=True)
     async def showgames(self, ctx):
-        """Shows the currently most played games"""
+        """Shows the currently most played games. Type whoisplaying followed by the game name to see who is playing that game!"""
         server = ctx.message.server
         members = server.members
 
