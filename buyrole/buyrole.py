@@ -157,7 +157,7 @@ class Buyrole:
             colour = 0x72198b
         else:
             colour = self.settings_dict[server.id]['colour']
-        embed = discord.Embed(description='**Games list. Type ?iplay to join a role!**', colour=colour)
+        embed = discord.Embed(description=' :video_game:**Games list. Type ?iplay to join a role!**', colour=colour)
         for roleid, roledata in self.settings_dict[server.id]['roles'].items():
             role = discord.utils.get(server.roles, id=roleid)
             if not role:
