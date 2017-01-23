@@ -101,7 +101,7 @@ class Utility:
             lolies = await self.bot.say(" :raised_hand: Wait up Getting Names :bookmark: ")
             await asyncio.sleep(1) #taking time to retrieve the names
             server = ctx.message.server
-            member = " :bookmark_tabs:  ***{1}*** Members found in the ***{0}*** Role, :bookmark_tabs: \n".format(rolename, len([m for m in server.members if therole in m.roles]))
+            member = " :video_game:  ***{1}*** people play ***{0}*** in this server!, :video_game: \n".format(rolename, len([m for m in server.members if therole in m.roles]))
             member += "```diff\n+"
             member += " \n+".join(m.display_name for m in server.members if therole in m.roles)
             member += "```"
