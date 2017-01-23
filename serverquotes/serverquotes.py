@@ -115,7 +115,7 @@ class ServerQuotes:
         return self._get_random_quote(ctx)
 
     @commands.command(pass_context=True, no_pm=True)
-    @checks.mod_or_permissions(manage_messages=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def rmquote(self, ctx, num: int):
         """Deletes a quote by its number
 
@@ -130,6 +130,7 @@ class ServerQuotes:
             await self.bot.say("Quote #%i does not exist." % num)
 
     @commands.command(pass_context=True, no_pm=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def lsquotes(self, ctx):
         """Displays a list of all quotes"""
         sid = ctx.message.server.id
@@ -152,7 +153,7 @@ class ServerQuotes:
             await self.bot.say('```\n%s\n```' % page)
 
     @commands.command(pass_context=True, no_pm=True)
-    @checks.mod_or_permissions(manage_messages=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def addquote(self, ctx, message: str, *, author: str = None):
         """Adds a quote to the server quote list. The quote must be enclosed
         in \"double quotes\". If a member mention or name is the last argument,
@@ -170,6 +171,7 @@ class ServerQuotes:
         await self.bot.say("Quote added.")
 
     @commands.command(pass_context=True, no_pm=True)
+    @checks.serverowner_or_permissions(administrator=True)
     @commands.cooldown(6, 60, commands.BucketType.channel)
     async def quote(self, ctx, *, author_or_num: str = None):
         """Say a stored quote!
