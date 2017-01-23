@@ -64,6 +64,7 @@ class Dota:
 			await self.bot.say("Type help dota for info.")
 
 	@dota.command(name = 'setkey', pass_context = True)
+    @checks.serverowner_or_permissions(administrator=True)
 	async def setkey(self, ctx, key):
 		"""Sets the Dota 2 Wep API key (PM ONLY)"""
 
