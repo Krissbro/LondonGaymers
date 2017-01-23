@@ -47,5 +47,4 @@ def setup(bot):
     check_files()
     n = Admin(bot)
     bot.add_cog(n)
-    bot.add_listener(n.server_locker, "on_server_join")
     bot.loop.create_task(n.announce_manager())
