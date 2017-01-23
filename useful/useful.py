@@ -65,7 +65,7 @@ class Useful:
 
     @commands.command(pass_context=True)
     async def suggest(self, ctx, *, suggestion : str):
-        """Sends a suggestion to the owner."""
+        """Sends a suggestion to the Admins."""
         if settings.owner == "id_here":
             await self.bot.say("I have no owner set, cannot suggest.")
             return
