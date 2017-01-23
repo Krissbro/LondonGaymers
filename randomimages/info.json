@@ -1,0 +1,7 @@
+{
+    "AUTHOR" : "Phantium",
+    "INSTALL_MSG" : "\nMessage from Phantium:\nThanks for using my RandomImages cog!\nThis cog requires lxml: pip3 install lxml",
+    "NAME" : "RandomImages",
+    "SHORT" : "Provides access to random images",
+    "DESCRIPTION" : "Provides access to random images. Requires lxml: pip3 install lxml"
+}
