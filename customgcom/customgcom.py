@@ -19,7 +19,7 @@ class CustomGlobalCommands:
         dataIO.save_json(JSON, self.c_commands)
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def setgcom(self, ctx, command: str, *, text):
         """Adds a global custom command
 
@@ -48,7 +48,7 @@ class CustomGlobalCommands:
                 await self.bot.say("OK, leaving that command alone.")
 
     @commands.command()
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def rmgcom(self, command: str):
         """Removes a global custom command
 
@@ -63,6 +63,7 @@ class CustomGlobalCommands:
             await self.bot.say("That command doesn't exist.")
 
     @commands.command(pass_context=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def lsgcom(self, ctx):
         """Shows global custom commands list"""
         if self.c_commands:
