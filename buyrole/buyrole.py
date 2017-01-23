@@ -51,7 +51,7 @@ class Buyrole:
         else:
             try:
                 await self._process_role(server, ctx.message.author, role, False)
-                await self.bot.say('Done! You\'re now the proud owner of {}'.format(role.name))
+                await self.bot.say(':ok_hand: Sweet. I\'ve added you to the {} players.'.format(role.name))
             except InvalidRole:
                 await self.bot.say('This role cannot be bought')
             except InsufficientBalance:
