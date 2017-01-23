@@ -35,7 +35,7 @@ class WhoPlays:
 
     @commands.command(pass_context=True, no_pm=True)
     async def showgames(self, ctx):
-        """Shows the currently most played games. Type whoisplaying followed by the game name to see who is playing that game!"""
+        """Shows the currently most played games."""
         server = ctx.message.server
         members = server.members
 
@@ -52,7 +52,7 @@ class WhoPlays:
             await self.bot.say("Surprisingly, no one is playing anything.")
         else:            
             # create display
-            msg = "```These are the server's most played games at the moment: \n\n"
+            msg = "```These are the server's most played games at the moment: \n Type whoisplaying followed by the game name to see who is playing that game! \n\n"
             msg += "{:<25s}{:>25s}\n".format("Game:", "# Playing:")
             max_games = min(len(sorted_list), 10)
             for i in range(max_games):
