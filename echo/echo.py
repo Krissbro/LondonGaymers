@@ -9,7 +9,7 @@ class Echo:
         self.bot = bot
 
     @commands.command()
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def echo(self, *text):
         """I'll repeat what you said."""
 
@@ -17,7 +17,7 @@ class Echo:
         await self.bot.say(text)
 
     @commands.command()
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def sonar(self, channelid, *, text):
         """I'll repeat what you said and where you want it.
         A modified version of the debug command, with help from Calebj."""
@@ -27,7 +27,7 @@ class Echo:
         return await self.bot.send_message(channelid, text)
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def channelidget(self, ctx):
         """Gets current channel ID immediately."""
         channel = ctx.message.channel
