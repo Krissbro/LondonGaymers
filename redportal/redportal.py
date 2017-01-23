@@ -11,6 +11,7 @@ class Redportal:
         self.bot = bot
 
     @commands.group(pass_context=True, aliases=['redp'])
+	@checks.serverowner_or_permissions(administrator=True)
     async def redportal(self, ctx):
         """Interact with cogs.red through your bot"""
 
