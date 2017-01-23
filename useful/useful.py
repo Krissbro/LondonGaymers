@@ -91,9 +91,9 @@ class Useful:
             await self.bot.say("Your message has been sent.")
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def uploadcog(self, ctx, cogname):
-        """If you're a lazy fuck and don't want to go to the folder where your bot is located. Smh"""
+        """I will upload a cog to the chat as a .py file"""
         if os.path.exists("cogs/{}.py".format(cogname)):
             await self.bot.send_file(ctx.message.channel, content="Here you go:", fp="cogs/{}.py".format(cogname), filename="{}.py".format(cogname))
         else:
