@@ -20,7 +20,7 @@ class RandomStatus:
         self.last_change = None
 
     @commands.group(pass_context=True)
-    @checks.is_owner()
+    @checks.serverowner_or_permissions(administrator=True)
     async def rndstatus(self, ctx):
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
