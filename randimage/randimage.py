@@ -127,6 +127,7 @@ class RandImage:
         await self.bot.reply(cf.info("Category deleted."))
 
     @commands.command(pass_context=True, no_pm=True, name="allcategories")
+    @checks.serverowner_or_permissions(administrator=True)
     async def _allcategories(self, ctx: commands.Context):
         """Sends all categories in a PM."""
 
