@@ -5,7 +5,7 @@ import discord
 import difflib
 import os
 import re
-
+from cogs.utils import checks
 
 class Steam:
     def __init__(self, bot):
