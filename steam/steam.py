@@ -133,6 +133,7 @@ class Steam:
             await self.bot.say(message)
 
     @commands.command(pass_context=True, no_pm=True, name='steamupdate', aliases=['stupdate'])
+    @checks.serverowner_or_permissions(administrator=True)
     async def _update(self, context):
         try:
             await self._update_apps()
