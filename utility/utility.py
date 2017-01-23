@@ -90,8 +90,8 @@ class Utility:
                 "\"Change Nickname\" permission.***:no_good:")
 
     @commands.command(pass_context=True)
-    async def inrole(self, ctx, *, rolename):
-        """Check members in the role totally didn't copy dex's eye emoji"""
+    async def whoplays(self, ctx, *, rolename):
+        """See who plays games across this server"""
         server = ctx.message.server
         message = ctx.message
         channel = ctx.message.channel
