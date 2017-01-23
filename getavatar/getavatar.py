@@ -10,7 +10,7 @@ class Avatar:
 
     @commands.command(pass_context=True)
     async def getavatar(self, ctx, *, user: discord.Member=None):
-		"""Gives your avatar. Tag someone to get theirs"""
+        """Gives your avatar. Tag someone to get theirs"""
         author = ctx.message.author
 
         if not user:
