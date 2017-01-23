@@ -12,7 +12,7 @@ class Warner:
         self.warnings = dataIO.load_json("data/warner/warnings.json")
         
     @commands.command(pass_context=True)
-	@checks.serverowner_or_permissions(administrator=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def warn(self, ctx, user:discord.Member):
         """Warn people for their actions."""
         print(self.warnings)
@@ -42,7 +42,7 @@ class Warner:
                 return
                
     @commands.command(pass_context=True)
-	@checks.serverowner_or_permissions(administrator=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def resetwarns(self, ctx, user:discord.Member):
         """Reset the self.warnings you gave to someone"""
         serverid = ctx.message.server.id
@@ -60,7 +60,7 @@ class Warner:
             return
             
     @commands.command(pass_context=True)
-	@checks.serverowner_or_permissions(administrator=True)
+    @checks.serverowner_or_permissions(administrator=True)
     async def warns(self, ctx, user:discord.Member):
         """See how  much warnings someone has."""
         if ctx.message.server.id not in self.warnings:
