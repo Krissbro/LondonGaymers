@@ -29,11 +29,6 @@ class Warner:
         else:
             self.warnings[serverid][userid] = self.warnings[serverid][userid] + 1
             dataIO.save_json("data/warner/warnings.json", self.warnings)
-            if self.warnings[serverid][userid] == 3:
-                del self.warnings[serverid][userid]
-                dataIO.save_json("data/warner/warnings.json", self.warnings)
-                await self.bot.say("User has 3 warnings, what are you consequences? (btw, warnings are reset for this user!)")
-                return
             if self.warnings[serverid][userid] > 3:
                 await self.bot.say("User has over 3 warnings, wut?")
                 return
