@@ -177,7 +177,7 @@ class ServerQuotes:
         Without any arguments, this command randomly selects from all stored
         quotes. If you supply an author name, it randomly selects from among
         that author's quotes. Finally, if given a number, that specific quote
-        will be said, assuming it exists. Use [p]lsquotes to show all quotes.
+        will be said, assuming it exists. Use [p]lsquotes to show all quotes where [p] is the prefix.
         """
 
         sid = ctx.message.server.id
