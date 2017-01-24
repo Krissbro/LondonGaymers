@@ -171,7 +171,6 @@ class ServerQuotes:
         await self.bot.say("Quote added.")
 
     @commands.command(pass_context=True, no_pm=True)
-    @checks.serverowner_or_permissions(administrator=True)
     @commands.cooldown(6, 60, commands.BucketType.channel)
     async def quote(self, ctx, *, author_or_num: str = None):
         """Say a stored quote!
