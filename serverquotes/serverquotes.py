@@ -150,7 +150,7 @@ class ServerQuotes:
             table.append((i + 1, self._quote_author(ctx, q), name, text))
         tabulated = tabulate(table, header)
         for page in pagify(tabulated, ['\n']):
-            await self.bot.say('```\n%s\n```' % page)
+            await self.bot.whisper('```\n%s\n```' % page)
 
     @commands.command(pass_context=True, no_pm=True)
     @checks.serverowner_or_permissions(administrator=True)
