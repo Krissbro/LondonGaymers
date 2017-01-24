@@ -130,7 +130,6 @@ class ServerQuotes:
             await self.bot.say("Quote #%i does not exist." % num)
 
     @commands.command(pass_context=True, no_pm=True)
-    @checks.serverowner_or_permissions(administrator=True)
     async def lsquotes(self, ctx):
         """Displays a list of all quotes"""
         sid = ctx.message.server.id
