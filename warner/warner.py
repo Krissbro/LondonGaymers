@@ -25,7 +25,6 @@ class Warner:
             self.warnings[serverid][userid] = 1
             dataIO.save_json("data/warner/warnings.json", self.warnings)
             await self.bot.say("1 warning has been added for the user.\nThat makes a total of 1 warning for this user.")
-            return
             else:
                 await self.bot.say("1 warning has been added for the user.\nThat makes a total of {} warnings for this user.".format(self.warnings[serverid][userid]))
                 return
