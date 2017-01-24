@@ -1,0 +1,7 @@
+{
+    "AUTHOR" : "Paddolicious#8880",
+    "NAME" : "Statistics",
+    "SHORT" : "Keeps track of statistics",
+    "DESCRIPTION" : "Keeps track of statistics, and gives the ability to have it update in a channel of your choice.",
+    "REQUIREMENTS" : ["psutil"]
+}
