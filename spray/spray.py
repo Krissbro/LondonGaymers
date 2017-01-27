@@ -40,8 +40,8 @@ class Spray:
         if author == user:
             await self.bot.say("You need to tell me who you want to spray!")
         else:
-        await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
-		
+            await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
+
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
         """Adds a spray to the list."""
