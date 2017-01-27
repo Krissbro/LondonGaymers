@@ -43,7 +43,7 @@ class Spray:
     async def addspray(self, ctx, spraylink_giphypls):
         """Adds a spray to the list."""
         spraylink = spraylink_giphypls
-        if spraylink.startswith("https://media.giphy.com/"):
+        if spraylink.startswith("https://media.giphy.com/","http://31.media.tumblr.com/"):
             self.spraylist.append(spraylink + " by {}.".format(str(ctx.message.author)))
             dataIO.save_json("data/spray/sprays.json", self.spraylist)
             await self.bot.say("Spray added!")
