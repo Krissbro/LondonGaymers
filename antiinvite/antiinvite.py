@@ -179,15 +179,15 @@ class AntiLink:
                     des = "None"
                     tex = "None"
                     nam = "None"
-                if ("discord.gg/" in des) or ("discord" in des and "." in des and "gg" in des and "/" in des) or ("discordapp.com/invite/" in des) or ("discord.me/" in des) or ("discordapp" in des and "." in des and "com" in des and "/" in des and "invite" in des and "/" in des):
+                if ("discord.gg/" in des) or ("discord" in des and "." in des and "gg" in des and "/" in des) or ("discordapp.com/invite/" in des) or ("discordapp" in des and "." in des and "com" in des and "/" in des and "invite" in des and "/" in des):
                     check = True
                 else:
                     pass
-                if ("discord.gg/" in tex) or ("discord" in tex and "." in tex and "gg" in tex and "/" in tex) or ("discordapp.com/invite/" in tex) or ("discord.me/" in tex) or ("discordapp" in tex and "." in tex and "com" in tex and "/" in tex and "invite" in tex and "/" in tex):
+                if ("discord.gg/" in tex) or ("discord" in tex and "." in tex and "gg" in tex and "/" in tex) or ("discordapp.com/invite/" in tex) or ("discordapp" in tex and "." in tex and "com" in tex and "/" in tex and "invite" in tex and "/" in tex):
                     check = True
                 else:
                     pass
-                if ("discord.gg/" in nam) or ("discord" in nam and "." in nam and "gg" in nam and "/" in nam) or ("discordapp.com/invite/" in nam) or ("discord.me/" in nam) or ("discordapp" in nam and "." in nam and "com" in nam and "/" in nam and "invite" in nam and "/" in nam):
+                if ("discord.gg/" in nam) or ("discord" in nam and "." in nam and "gg" in nam and "/" in nam) or ("discordapp.com/invite/" in nam) or ("discordapp" in nam and "." in nam and "com" in nam and "/" in nam and "invite" in nam and "/" in nam):
                     check = True
                 else:
                     pass
