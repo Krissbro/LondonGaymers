@@ -11,7 +11,7 @@ from .utils import checks
 from __main__ import send_cmd_help
 try:
     if not discord.opus.is_loaded():
-	    discord.opus.load_opus('libopus-0.dll')
+        discord.opus.load_opus('libopus-0.dll')
 except OSError:
     opus = False
 except:
