@@ -62,7 +62,7 @@ class Spray:
         """Deletes a spray.
 
         Example:
-        [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif"
+        [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif
         """
         spraylink = spraylink_and_owner
         try:
