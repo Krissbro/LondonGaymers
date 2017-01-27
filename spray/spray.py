@@ -37,7 +37,7 @@ class Spray:
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, message, user: discord.Member=None):
         """Lets you spray someone."""
-		server = ctx.message.server
+        server = ctx.message.server
         if message.server != None:
             if not "bots" in message.server.name.lower():
                 if "@" in message.content.lower():
