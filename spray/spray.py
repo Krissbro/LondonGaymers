@@ -37,7 +37,7 @@ class Spray:
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, message, user: discord.Member=None):
         """Lets you spray someone."""
-        if "@" in message.content.lower():
+        if "@" in ctx.message.content.lower():
             await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
         else:
             await self.bot.say("You didn't tell me who to spray! ¯\_(ツ)_/¯")
