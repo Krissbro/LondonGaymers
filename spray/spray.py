@@ -39,7 +39,7 @@ class Spray:
         """Lets you spray someone."""
         author = ctx.message.author
         if not user:
-			user = author
+            user = author
             await self.bot.say("You need to tell me who you want to spray!")
         else:
             await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
