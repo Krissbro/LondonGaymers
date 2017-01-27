@@ -35,7 +35,7 @@ class Spray:
         self.spraylist = dataIO.load_json("data/spray/sprays.json")
         
     @commands.command(pass_context=True)
-    async def spray(self, ctx, *, message, user: discord.Member=None):
+    async def spray(self, ctx, *, message, server, user: discord.Member=None):
         """Lets you spray someone."""
         if message.server != None:
             if not "bots" in message.server.name.lower():
