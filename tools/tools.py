@@ -1,9 +1,6 @@
 import discord
 from discord.ext import commands
 from .utils.chat_formatting import *
-import random
-from random import randint
-from random import choice as randchoice
 import datetime
 from __main__ import send_cmd_help
 import re
@@ -171,14 +168,6 @@ def check_file():
     if not dataIO.is_valid_json(f):
         print("Creating default weather.json...")
         dataIO.save_json(f, weather)
-
-    data = {}
-    f = "data/youtube/settings.json"
-    if not dataIO.is_valid_json(f):
-        print("Creating default settings.json...")
-        dataIO.save_json(f, data)
-
-
 
 def check_folder():
     if not os.path.exists('data/seen'):
