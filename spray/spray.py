@@ -36,11 +36,8 @@ class Spray:
         
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, user: discord.Member=None):
-		"""Lets you spray someone."""
-		msg = ":water_gun:"
-		msg =+ user.name+ "has been sprayed"
-		msg =+ randomchoice.self.spraylist
-		await self.bot.say(msg)
+        """Lets you spray someone."""
+        await self.bot.send_message(ctx.message.channel, choice(self.spraylist))
         
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
