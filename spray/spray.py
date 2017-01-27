@@ -37,7 +37,7 @@ class Spray:
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, user: discord.Member=None):
         """Lets you spray someone."""
-		author = ctx.message.author
+        author = ctx.message.author
         if author == user:
             await self.bot.say("You need to tell me who you want to spray!")
         else:
