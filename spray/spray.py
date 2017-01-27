@@ -42,7 +42,7 @@ class Spray:
         if not user:
             user = author
 
-        await self.bot.send_message(":water_gun: {}, You just sprayed {}! {}".format(author.mention, user.mention, choice(self.spraylist)))
+        await self.bot.send_message(":water_gun: {}, You just sprayed {}! {}".format(str(author.mention, user.mention, choice(self.spraylist))))
 
     @commands.command(pass_context=True)
     @checks.mod_or_permissions()
