@@ -40,7 +40,7 @@ class Spray:
         author = ctx.message.author
         if not user
             user = author
-        spray = choice(self.spraylist)
+        spray = (choice(self.spraylist))
         await self.bot.say(":water_gun: {}. you just sprayed {}! {}" .format(author.mention, user.mention, spray))
         
     @commands.command(pass_context=True)
