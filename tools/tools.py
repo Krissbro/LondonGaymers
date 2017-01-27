@@ -186,7 +186,7 @@ def setup(bot):
     global logger
     check_folder()
     check_file()
-    n = General(bot)
+    n = Tools(bot)
     bot.add_listener(n.listener, 'on_message')
     loop = asyncio.get_event_loop()
     bot.add_cog(n)
