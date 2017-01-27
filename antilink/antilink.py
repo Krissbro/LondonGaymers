@@ -19,6 +19,7 @@ class Antilink:
         self.regex_discordme = re.compile(r"<?(https?:\/\/)?(www\.)?(discord\.me\/)\b([-a-zA-Z0-9/]*)>?")
 
     @commands.group(pass_context=True, no_pm=True)
+    @checks.admin_or_permissions(administrator=True)
     async def antilinkset(self, ctx):
         """Manages the settings for antilink."""
         serverid = ctx.message.server.id

@@ -47,6 +47,7 @@ class Spray:
         await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
 
     @commands.command(pass_context=True)
+    @checks.admin_or_permissions(administrator=True)
     async def addspray(self, ctx, spraylink_giphypls):
         """Adds a spray to the list."""
         spraylink = spraylink_giphypls
