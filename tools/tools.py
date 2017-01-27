@@ -207,22 +207,6 @@ class Tools:
         settings['TIME_API_KEY'] = key
         dataIO.save_json(self.settings_file, settings)
 
-   @commands.command(pass_context=True)
-    async def mojis(self, ctx, server: int = None):
-        """List all available custom emoji"""
-        server = server
-        servers = list(self.bot.servers)
-        if server is None:
-            msg = "``` Available servers:"
-            for x in servers:
-                msg += "\n\t" + str(servers.index(x)) + ("- {0.name}".format(x))
-            await self.bot.say(msg + "```")
-        else:
-            msg = "```Emojis for {0.name}".format(servers[server])
-            for x in list(servers[server].emojis):
-                msg += "\n\t" + str(x.name)
-            await self.bot.say(msg + "```")
-
 def check_file():
     f = 'data/away/away.json'
     if not dataIO.is_valid_json(f):
