@@ -41,7 +41,7 @@ class Spray:
         if not user
             user = author
         spray = choice(self.spraylist)
-        await self.bot.send_message(ctx.message.channel ":water_gun: {}. you just sprayed {}! {}" .format(author.mention, user.mention, spray))
+        await self.bot.say(":water_gun: {}. you just sprayed {}! {}" .format(author.mention, user.mention, spray))
         
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
