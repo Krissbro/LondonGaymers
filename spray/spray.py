@@ -32,7 +32,7 @@ class Spray:
 
     def __init__(self, bot):
         self.bot = bot
-        self.spraylist = dataIO.load_json("Data/spray/sprays.json")
+        self.spraylist = dataIO.load_json("data/spray/sprays.json")
 
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, user: discord.Member=None):
