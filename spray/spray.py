@@ -62,8 +62,7 @@ class Spray:
         """Deletes a spray.
 
         Example:
-        [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif
-        """
+        [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif"""
         spraylink = spraylink_and_owner
         try:
             self.spraylist.remove(spraylink)
@@ -75,10 +74,10 @@ class Spray:
 def check_folders():
     if not os.path.exists("data/spray")
     print("Creating data/spray folder...")
-        os.makedirs("data/spray)
+        os.makedirs("data/spray")
 
 def check_files():
-    if not os.path.exists("data/spray/sprays.json):
+    if not os.path.exists("data/spray/sprays.json"):
         print("Creating data/spray/sprays.json file...")
     	dataIO.save_json("data/spray/sprays.json", spraylist)
 
