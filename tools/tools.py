@@ -17,9 +17,6 @@ import io, os
 from .utils.dataIO import fileIO
 import logging
 
-
-settings = {"POLL_DURATION" : 60}
-
 JSON = 'data/away/away.json'
 
 class Tools:
@@ -28,19 +25,7 @@ class Tools:
     def __init__(self, bot):
         self.bot = bot
         self.data = dataIO.load_json(JSON)
-        self.stopwatches = {}
-        self.settings = 'data/youtube/settings.json'
-        self.youtube_regex = (
-          r'(https?://)?(www\.)?'
-          '(youtube|youtu|youtube-nocookie)\.(com|be)/'
-          '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
-
         self.settings_file = 'data/weather/weather.json'
-        self.ball = ["Rn, yes", "It is certain", "It is decidedly so🤔", "Most likely👍", "Outlook good👍",
-                     "Signs point to yes👍", "Without a doubt👍", "Yes👍", "Yes – definitely :P", "You may rely on it👍", "❌Reply hazy, try again❌",
-                     "Ask again later🤔", "Better not tell you now", "Cannot predict now🤔", "Concentrate and ask again🤔",
-                     "Don't count on it🤔", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful🤔"]
-        self.poll_sessions = []
 
     async def listener(self, message):
         if not message.channel.is_private and self.bot.user.id != message.author.id:
@@ -73,41 +58,6 @@ class Tools:
                 if parse['status'] == 'OK':
                     return datetime.datetime.fromtimestamp(int(parse['timestamp'])-7200).strftime('%Y-%m-%d %H:%M')
         return
-
-    async def listener(self, message):
-        if not message.channel.is_private:
-            if message.author.id != self.bot.user.id:
-                server_id = message.server.id
-                data = dataIO.load_json(self.settings)
-                if server_id not in data:
-                    enable_delete = False
-                    enable_meta = False
-                    enable_url = False
-                else:
-                    enable_delete = data[server_id]['ENABLE_DELETE']
-                    enable_meta = data[server_id]['ENABLE_META']
-                    enable_url = data[server_id]['ENABLE_URL']
-                if enable_meta:
-                    url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', message.content)
-                    if url:
-                        is_youtube_link = re.match(self.youtube_regex, url[0])
-                        if is_youtube_link:
-                            yt_url = "http://www.youtube.com/oembed?url={0}&format=json".format(url[0])
-                            metadata = await self.get_json(yt_url)
-                            if enable_url:
-                                msg = '**Title:** _{}_\n**Uploader:** _{}_\n_YouTube url by {}_\n\n{}'.format(metadata['title'], metadata['author_name'], message.author.name, url[0])
-                                if enable_delete:
-                                    try:
-                                        await self.bot.delete_message(message)
-                                    except:
-                                        pass
-                            else:
-                                if enable_url:
-                                    x = '\n_YouTube url by {}_'.format(message.author.name)
-                                else:
-                                    x = ''
-                                msg = '**Title:** _{}_\n**Uploader:** _{}_{}'.format(metadata['title'], metadata['author_name'], x)
-                            await self.bot.send_message(message.channel, msg)
 
     async def listener(self, message):
         tmp = {}
