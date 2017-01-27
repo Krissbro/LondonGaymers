@@ -40,9 +40,9 @@ class Spray:
         await self.bot.send_message(ctx.message.channel, choice(self.spraylist))
         
     @commands.command(pass_context=True)
-    async def addspray(self, ctx, spraylink_imgurpls):
+    async def addspray(self, ctx, spraylink_giphypls):
         """Adds a spray to the list."""
-        spraylink = spraylink_imgurpls
+        spraylink = spraylink_giphypls
         if spraylink.startswith("https://media.giphy.com/"):
             self.spraylist.append(spraylink + " by {}.".format(str(ctx.message.author)))
             dataIO.save_json("data/spray/sprays.json", self.spraylist)
