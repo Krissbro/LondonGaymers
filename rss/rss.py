@@ -141,12 +141,14 @@ class RSS(object):
             return True
 
     @commands.group(pass_context=True)
+    @checks.admin_or_permissions(administrator=True)
     async def rss(self, ctx):
         """RSS feed stuff"""
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
 
     @rss.command(pass_context=True, name="add")
+    @checks.admin_or_permissions(administrator=True)
     async def _rss_add(self, ctx, name: str, url: str):
         """Add an RSS feed to the current channel"""
         channel = ctx.message.channel
@@ -163,6 +165,7 @@ class RSS(object):
                 'Invalid or unavailable URL.')
 
     @rss.command(pass_context=True, name="list")
+    @checks.admin_or_permissions(administrator=True)
     async def _rss_list(self, ctx):
         """List currently running feeds"""
         msg = "Available Feeds:\n\t"
@@ -170,6 +173,7 @@ class RSS(object):
         await self.bot.say(box(msg))
 
     @rss.command(pass_context=True, name="template")
+    @checks.admin_or_permissions(administrator=True)
     async def _rss_template(self, ctx, feed_name: str, *, template: str):
         ("""Set a template for the feed alert
 
@@ -187,6 +191,7 @@ class RSS(object):
             await self.bot.say('Feed not found!')
 
     @rss.command(pass_context=True, name="force")
+    @checks.admin_or_permissions(administrator=True)
     async def _rss_force(self, ctx, feed_name: str):
         """Forces a feed alert"""
         server = ctx.message.server
@@ -211,6 +216,7 @@ class RSS(object):
         await self.bot.say(message)
 
     @rss.command(pass_context=True, name="remove")
+    @checks.admin_or_permissions(administrator=True)
     async def _rss_remove(self, ctx, name: str):
         """Removes a feed from this server"""
         success = await self.feeds.delete_feed(ctx, name)
