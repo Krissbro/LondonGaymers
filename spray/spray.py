@@ -59,9 +59,9 @@ class Spray:
     @commands.command()
     @checks.mod_or_permissions()
     async def delspray(self, spraylink_and_owner):
-        """Deletes a spray.
-
-        Example:
+        """Deletes a spray.\
+        \
+        Example:\
         [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif
 		"""
         spraylink = spraylink_and_owner
