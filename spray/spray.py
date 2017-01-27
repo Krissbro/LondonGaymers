@@ -39,7 +39,7 @@ class Spray:
         """Lets you spray someone."""
         if ctx.message.user.mention = None
             await self.bot.say("You didn't specify who to spray")
-        else
+            return
         await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
 		
     @commands.command(pass_context=True)
