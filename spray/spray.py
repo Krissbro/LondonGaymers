@@ -41,7 +41,6 @@ class Spray:
         if not user
             user = author
         await self.bot.say(":water_gun:" + author.mention + " you just sprayed " + user.mention + random.choice(spraylist))
-        else await self.bot.say(":water_gun:" + author.mention + "go wild! Spray all the things!" + random.choice(spraylist))
         
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
