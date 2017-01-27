@@ -35,13 +35,13 @@ class Spray:
         self.spraylist = dataIO.load_json("data/spray/sprays.json")
         
     @commands.command(pass_context=True)
-    async def spray(self, ctx, user: discord.Member=None):
+    async def spray(self, ctx, *, user: discord.Member=None):
         """Lets you spray someone."""
         author = ctx.message.author
         if not user
             user = author
         spray = choice(self.spraylist)
-        await self.bot.say(":water_gun: {}. you just sprayed {}! {}" .format(author.mention, user.mention, spray))
+        await self.bot.send_message(ctx.message.channel ":water_gun: {}. you just sprayed {}! {}" .format(author.mention, user.mention, spray))
         
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
