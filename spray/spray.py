@@ -37,12 +37,14 @@ class Spray:
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, user: discord.Member=None):
         """Lets you spray someone."""
-        author = ctx.message.author
-        if not user:
-            user = author
-            await self.bot.say("You need to tell me who you want to spray!")
-        else:
-            await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
+        message = ctx.message
+        author = message.author
+
+        if len(message.mentions) == 0:
+            await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
+            return
+
+        await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
 
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
