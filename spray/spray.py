@@ -26,34 +26,38 @@ spraylist = [
 "https://media.giphy.com/media/nZKPBavKWBMEo/giphy.gif",
 "https://media.giphy.com/media/qw0TXAwW8hsk0/giphy.gif"
 ]
-
+        
 class Spray:
-    """Spray someone who is being Thirsty!"""
+    """Lets you Spray someone."""
 
     def __init__(self, bot):
         self.bot = bot
         self.spraylist = dataIO.load_json("data/spray/sprays.json")
-
+        
     @commands.command(pass_context=True)
-    @checks.mod_or_permissions()
-    async def addspray(self, ctx, spraylink_giphypls):
-        """Adds a spray to the global list of sprays."""
-        spraylink = spraylink_giphypls
-        if spraylink.startswith("https://media.giphy.com"):
+    async def spray(self, ctx, *, user: discord.Member=None):
+        """Lets you spray someone."""
+        await self.bot.send_message(ctx.message.channel, choice(self.spraylist))
+        
+    @commands.command(pass_context=True)
+    async def addspray(self, ctx, spraylink_imgurpls):
+        """Adds a spray to the list."""
+        spraylink = spraylink_imgurpls
+        if spraylink.startswith("https://media.giphy.com/"):
             self.spraylist.append(spraylink + " by {}.".format(str(ctx.message.author)))
             dataIO.save_json("data/spray/sprays.json", self.spraylist)
-            await self.bot.say("spray added!")
+            await self.bot.say("Spray added!")
         else:
-            await self.bot.say("spraylink was not a giphy link.")
+            await self.bot.say("spraylink was not a giphy link")
         
     @commands.command()
     @checks.mod_or_permissions()
     async def delspray(self, spraylink_and_owner):
-        """Deletes a spray.\
-        \
-        Example:\
-        [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif
-		"""
+        """Deletes a spray.
+        
+        Example:
+        [p]delspray "https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif"
+        """
         spraylink = spraylink_and_owner
         try:
             self.spraylist.remove(spraylink)
@@ -63,15 +67,15 @@ class Spray:
             await self.bot.say("Couldn't delete the spray from sprays.json, was the format correct?")
 
 def check_folders():
-    if not os.path.exists("data/spray")
-    print("Creating data/spray folder...")
+    if not os.path.exists("data/spray"):
+        print("Creating data/spray folder...")
         os.makedirs("data/spray")
-
+        
 def check_files():
     if not os.path.exists("data/spray/sprays.json"):
         print("Creating data/spray/sprays.json file...")
-    	dataIO.save_json("data/spray/sprays.json", spraylist)
-
+        dataIO.save_json("data/spray/sprays.json", spraylist)
+        
 def setup(bot):
     check_folders()
     check_files()
