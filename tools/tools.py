@@ -72,23 +72,6 @@ class Tools:
                         em.set_author(name='{} is currently away'.format(author.display_name), icon_url=avatar)
                     await self.bot.send_message(message.channel, embed=em)
 
-    @commands.command(pass_context=True, name="away", aliases=["afk"])
-    async def _away(self, context, *message: str):
-        """Tell the bot you're away or back."""
-        author = context.message.author
-        if author.id in self.data:
-            del self.data[author.id]
-            msg = 'Welcome back :space_invader: :D.'
-        else:
-            self.data[context.message.author.id] = {}
-            if len(str(message)) < 256:
-                self.data[context.message.author.id]['MESSAGE'] = ' '.join(context.message.clean_content.split()[1:])
-            else:
-                self.data[context.message.author.id]['MESSAGE'] = True
-            msg = '__You\'re now set as away__ :wave: ,***Get out of here!*** :point_right:  :door: .'
-        dataIO.save_json(JSON, self.data)
-        await self.bot.say(msg)
-
     @commands.command(pass_context=True, name='weather', aliases=['we'])
     async def _weather(self, context, *arguments: str):
         """Get the weather!"""
