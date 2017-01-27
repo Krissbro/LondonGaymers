@@ -58,7 +58,7 @@ class Spray:
         
     @commands.command()
     @checks.mod_or_permissions()
-    async def delspray(self, memelink_and_owner):
+    async def delspray(self, spraylink_and_owner):
         """Deletes a spray.
 
         Example:
