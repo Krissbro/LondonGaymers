@@ -164,7 +164,7 @@ class AntiLink:
         idk = message.content
         if db["Toggle"] is True and db["No Invite"] is True:
             check = None
-            if ("discord.gg/" in message.content) or ("discord" in idk and "." in idk and "gg" in idk and "/" in idk) or ("discordapp.com/invite/" in message.content) or ("discord.me/" in message.content) or ("discordapp" in idk and "." in idk and "com" in idk and "/" in idk and "invite" in idk and "/" in idk):
+            if ("discord.gg/" in message.content) or ("discord" in idk and "." in idk and "gg" in idk and "/" in idk) or ("discordapp.com/invite/" in message.content) or ("discordapp" in idk and "." in idk and "com" in idk and "/" in idk and "invite" in idk and "/" in idk):
                 check = True
             else:
                 pass
