@@ -10,6 +10,7 @@ import copy
 from cogs.utils.dataIO import fileIO
 from cogs.utils.chat_formatting import *
 from __main__ import send_cmd_help
+from .utils import checks
 
 try:
     import feedparser
