@@ -32,7 +32,7 @@ class Spray:
 
     def __init__(self, bot):
         self.bot = bot
-		self.spraylist = dataIO.load_json("Data/spray/sprays.json)
+        self.spraylist = dataIO.load_json("Data/spray/sprays.json)
 
     @commands.command(pass_context=True)
     async def spray(self, ctx, *, user: discord.Member=None):
@@ -60,7 +60,7 @@ class Spray:
     @checks.mod_or_permissions()
     async def delspray(self, memelink_and_owner):
         """Deletes a spray.
-        
+
         Example:
         [p]delspray https://media.giphy.com/media/uSy9uVHKqRNjG/giphy.gif"
         """
@@ -73,17 +73,17 @@ class Spray:
             await self.bot.say("Couldn't delete the spray from sprays.json, was the format correct?")
 
 def check_folders():
-    if not os.path.exists("data/spray"):
-	    print("Creating data/spray folder...")
-		os.makedirs("data/spray)
+    if not os.path.exists("data/spray")
+    print("Creating data/spray folder...")
+        os.makedirs("data/spray)
 
 def check_files():
     if not os.path.exists("data/spray/sprays.json):
-	    print("Creating data/spray/sprays.json file...")
-		dataIO.save_json("data/spray/sprays.json", spraylist)
+        print("Creating data/spray/sprays.json file...")
+    	dataIO.save_json("data/spray/sprays.json", spraylist)
 
 def setup(bot):
     check_folders()
-	check_files()
+    check_files()
     n = Spray(bot)
-	bot.add_cog(n)
+    bot.add_cog(n)
