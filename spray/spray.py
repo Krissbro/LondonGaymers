@@ -35,12 +35,9 @@ class Spray:
         self.spraylist = dataIO.load_json("data/spray/sprays.json")
         
     @commands.command(pass_context=True)
-    async def spray(self, ctx, *, message, user: discord.Member=None):
+    async def spray(self, ctx, *, user: discord.Member=None):
         """Lets you spray someone."""
-        if "@" in ctx.message.content.lower():
             await self.bot.say("{} you have just sprayed {} \n {}".format(ctx.message.author.mention, user.mention, choice(self.spraylist)))
-        else:
-            await self.bot.say("You didn't tell me who to spray! ¯\_(ツ)_/¯")
 
     @commands.command(pass_context=True)
     async def addspray(self, ctx, spraylink_giphypls):
