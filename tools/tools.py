@@ -13,6 +13,7 @@ from cogs.utils.dataIO import dataIO
 import io, os
 from .utils.dataIO import fileIO
 import logging
+from random import choice
 
 JSON = 'data/away/away.json'
 
