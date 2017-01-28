@@ -137,6 +137,29 @@ class Tools:
         settings['TIME_API_KEY'] = key
         dataIO.save_json(self.settings_file, settings)
 
+    @commands.command()
+    async def rainbow(self, times:int, interval:float):
+        """Make a happy rainbow!"""
+        rainbow = await self.bot.say(embed=discord.Embed(title="Rainbow!", color=discord.Color.red()))
+        time = 0
+        error = 0
+        if interval < 1.4:
+            interval = 1.5
+        while times > time:
+            time = time + 1
+            color = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+            color = int(color, 16)
+            try:
+                await self.bot.edit_message(rainbow, embed=discord.Embed(title="Rainbow!", color=discord.Color(value=color)))
+            except:
+                if error < 1:
+                    await self.bot.say("An error occured, trying again.")
+                    error = error + 1
+                else:
+                    await self.bot.say("Another error occured, exiting.")
+                    return
+            await asyncio.sleep(interval)
+
 def check_file():
     f = 'data/away/away.json'
     if not dataIO.is_valid_json(f):
