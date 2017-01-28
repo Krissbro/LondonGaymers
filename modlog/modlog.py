@@ -169,8 +169,12 @@ class Modlog:
         
     async def on_member_join(self, member):
         if self.is_module(member.server, 'join'):
-            await self.log(member.server, "`[{}]` :inbox_tray: **Member Join Log**\n"
-                                        "```Member Joined: {}```".format(self.get_time(), str(member)))
+            em = discord.Embed(description="()".format(str(member), color=red, title=New Member)
+            avatar = ctx.message.author.avatar_url
+            author = ctx.message.author.name
+            em.set_author(name=author, icon_url=avatar)
+            em.set_footer(text="()".format(self.get_time())
+            await self.bot.say(":inbox_tray: Member Joined", embed=em)
                                         
     async def on_member_remove(self, member):
         if self.is_module(member.server, 'leave'):
