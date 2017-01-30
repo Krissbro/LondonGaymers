@@ -60,6 +60,9 @@ class Dota:
 	async def dota(self, ctx):
 		"""Returns various data for dota players"""
 
+		if ctx.invoked_subcommand is None:
+			await self.bot.say("Type help dota for info.")
+
 	@dota.command(name = 'setkey', pass_context = True)
 	@checks.serverowner_or_permissions(administrator=True)
 	async def setkey(self, ctx, key):
