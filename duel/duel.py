@@ -97,7 +97,7 @@ SUMMON = {
         'a badass tiger': 5,
         'a sharknado': 8,
         'a starving komodo dragon': 5
-        'The Poke of doom!': 5
+        'The poke of Doom': 5
     },
     'swarm': {
         'all these muthafucking snakes': 5,
