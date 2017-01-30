@@ -61,7 +61,7 @@ class Dota:
 		"""Returns various data for dota players"""
 
 		if ctx.invoked_subcommand is None:
-			await self.bot.say("Type help dota for info.")
+			await self.bot.say("Type ?help dota for a full list of commands.")
 
 	@dota.command(name = 'setkey', pass_context = True)
 	@checks.serverowner_or_permissions(administrator=True)
