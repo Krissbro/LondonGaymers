@@ -44,7 +44,7 @@ class Spray:
             await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
             return
 
-        await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, message, choice(self.spraylist)))
+        await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, message.content, choice(self.spraylist)))
         
     @commands.command(pass_context=True)
     @checks.admin_or_permissions(administrator=True)
