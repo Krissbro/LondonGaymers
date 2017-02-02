@@ -45,6 +45,9 @@ class Spray:
             return
 
         await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
+        if len(message.mentions) >1:
+            await self.boy.say("Multi-Spray!! {} has just sprayed {}!! \n".format(author.mention, user.mentions, choice(self.spraylist)))
+            return
 
     @commands.command(pass_context=True)
     @checks.admin_or_permissions(administrator=True)
