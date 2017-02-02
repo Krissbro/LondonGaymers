@@ -43,12 +43,12 @@ class Spray:
         if len(message.mentions) == 0:
             await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
             return
-
-        await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
-        if len(message.mentions) > 1:
+        elif len(message.mentions) == +1:
             await self.boy.say("Multi-Spray!! {} has just sprayed {}!! \n".format(author.mention, message.mentions, choice(self.spraylist)))
             return
 
+        await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
+        
     @commands.command(pass_context=True)
     @checks.admin_or_permissions(administrator=True)
     async def addspray(self, ctx, spraylink_giphypls):
