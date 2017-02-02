@@ -34,7 +34,7 @@ class Games:
     @commands.command(pass_context=True, aliases=['iplay'], no_pm=True,)
     async def games(self, ctx, *, role: discord.Role = None ):
         """Add Game-based roles,
-        To see the list of roles you can select use ``games``
+        To see the list of roles you can select use ?games
 		Role choice must be Case sensitive!"""
         server = ctx.message.server
         if server.id not in self.settings_dict:
