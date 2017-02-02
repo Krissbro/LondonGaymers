@@ -33,6 +33,8 @@ class Games:
 
     @commands.command(pass_context=True, aliases=['iplay'], no_pm=True,)
     async def games(self, ctx, *, role: discord.Role = None ):
+        """I couldn't find that role.
+		Check your spelling and remember roles are case sensitive!"""
         server = ctx.message.server
         if server.id not in self.settings_dict:
             await self.bot.say('This server doesn\'t have a shop yet')
