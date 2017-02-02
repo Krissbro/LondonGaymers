@@ -39,7 +39,7 @@ class Spray:
         """Lets you spray someone."""
         message = ctx.message
         author = message.author
-		mentions = message.mentions
+        mentions = message.mentions
 
         if len(message.mentions) == 0:
             await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
