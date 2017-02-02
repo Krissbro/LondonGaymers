@@ -44,7 +44,7 @@ class Spray:
             await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
             return
         elif len(message.mentions) == +1:
-            await self.bot.say("Multi-Spray!! {} has just sprayed {}!! \n".format(author.mention, message.mentions, choice(self.spraylist)))
+            await self.bot.say("Multi-Spray!! {} has just sprayed {}!! \n".format(author.mention, user.mentions, choice(self.spraylist)))
             return
 
         await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
