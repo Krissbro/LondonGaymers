@@ -47,4 +47,3 @@ def setup(bot):
     check_files()
     n = Admin(bot)
     bot.add_cog(n)
-    bot.loop.create_task(n.announce_manager())
