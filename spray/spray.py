@@ -44,7 +44,7 @@ class Spray:
             await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
         elif user.id == self.bot.user.id:
             user = ctx.message.author
-            mssg = " I can\'t believe you tried to spray me. I\'m a bot, i\'ll break!!!"
+            mssg = " I can\'t believe you tried to spray me. I\'m a bot, I\'ll break!!!"
             await self.bot.say(user.mention + mssg)
         else:
             await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
