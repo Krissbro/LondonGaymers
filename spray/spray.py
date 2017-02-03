@@ -35,7 +35,7 @@ class Spray:
         self.spraylist = dataIO.load_json("data/spray/sprays.json")
         
     @commands.command(pass_context=True)
-    async def spray(self, ctx, *, user: discord.Member,):
+    async def spray(self, ctx, *, user: discord.Member=None,):
         """Lets you spray someone."""
 
         message = ctx.message
@@ -47,7 +47,7 @@ class Spray:
             mssg = " I can\'t believe you tried to spray me. I\'m a bot, i\'ll break!!!"
             await self.bot.say(user.mention + mssg)
         else:
-            await self.bot.say("{} you have just sprayed {} {} {} {}\n{}".format(author.mention, user.mention, user.mention, user.mention, user.mention, choice(self.spraylist)))
+            await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
 
     @commands.command(pass_context=True)
     @checks.admin_or_permissions(administrator=True)
