@@ -39,6 +39,7 @@ class Spray:
         """Lets you spray someone."""
 
         message = ctx.message
+        author = msg.author
         multimsg = 'Have been sprayed!!'
         if user != None:
             if len(message.mentions) == 0:
