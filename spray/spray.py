@@ -40,18 +40,16 @@ class Spray:
 
         message = ctx.message
         author = msg.author
-        multimsg = 'Have been sprayed!!'
         if user != None:
             if len(message.mentions) == 0:
                 await self.bot.say("You haven't told me who to spray, so I guess I'll spray you {}! {}".format (author.mention, choice(self.spraylist)))
             elif user.id == self.bot.user.id:
                 user = ctx.message.author
                 msg = " I can\'t believe you tried to spray me. I\'m a bot, i\'ll break!!!"
+                global msg
                 await self.bot.say(user.mention + msg)
             else:
                 await self.bot.say("{} you have just sprayed {}\n{}".format(author.mention, user.mention, choice(self.spraylist)))
-        else:
-            await self.bot.say(user.mention + multimsg + choice(self.spraylist))
 
     @commands.command(pass_context=True)
     @checks.admin_or_permissions(administrator=True)
