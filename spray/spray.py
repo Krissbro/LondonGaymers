@@ -38,6 +38,7 @@ class Spray:
     async def spray(self, ctx, *, user: discord.Member=None,):
         """Lets you spray someone."""
 
+        message = ctx.message
         multimsg = 'Have been sprayed!!'
         if user != None:
             if len(message.mentions) == 0:
