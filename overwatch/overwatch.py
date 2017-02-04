@@ -33,7 +33,7 @@ class Overwatch:
     @commands.command(name="owxbx")
     async def owxbl(self,battle_tag):
         self.overwatch_info(battle_tag.replace("#","-").capitalize(), "eu", "xbl")
-
+        await self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
     async def overwatch_info(self, battle_tag, game_region, game_platform):
         await self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
         urls = [
