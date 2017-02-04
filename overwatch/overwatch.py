@@ -13,9 +13,9 @@ except ImportError:
     grequestsAvailable = False
 
 class Overwatch:
- 
+
     # Initialise the bot's settings
-    def __init(self, bot):
+    def __init__(self, bot):
         self.bot = bot
         self.base_api_location = "https://api.lootbox.eu"
         self.profile_endpoint  = "{0}/{1}/{2}/{3}/profile".format(base_api_location, game_platform, game_region, battle_tag)
