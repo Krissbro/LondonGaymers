@@ -35,7 +35,7 @@ class Overwatch:
         self.overwatch_info(battle_tag.replace("#","-").capitalize(), "eu", "xbl")
 
     async def overwatch_info(self, battle_tag, game_region, game_platform):
-        self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
+        await self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
         urls = [
             self.profile_endpoint.format(self.base_api_location, game_platform, game_region, battle_tag),
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"competitive"),
