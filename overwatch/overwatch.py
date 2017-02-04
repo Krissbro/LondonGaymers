@@ -41,11 +41,8 @@ class Overwatch:
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"competitive"),
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"quickplay"),
         ]
-        await self.bot.say("Urls: {0}".format(urls))
         requests  = (grequests.get(u) for u in urls)
-        await self.bot.say("requests: {0}".format(requests))
         responses = grequests.map(requests)
-        await self.bot.say("responses: {0}".format(responses))
         if responses[0].status_code == 200 and responses[1].status_code == 200 and responses[2].status_code == 200:
             user_data     = responses[0].json()
             comp_heroes   = responses[1].json()
