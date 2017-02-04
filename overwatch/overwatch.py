@@ -12,37 +12,38 @@ try: #check if grequests is installed
 except ImportError:
     grequestsAvailable = False
 
+
 class Overwatch:
 
     # Initialise the bot's settings
     def __init__(self, bot):
         self.bot = bot
         self.base_api_location = "https://api.lootbox.eu"
-        self.profile_endpoint  = "{0}/{1}/{2}/{3}/profile".format(base_api_location, game_platform, game_region, battle_tag)
+        self.profile_endpoint  = "{0}/{1}/{2}/{3}/profile"
         self.heroes_endpoint   = "{0}/{1}/{2}/{3}/{4}/heroes"
     # Set up the command information:
     # Grab the battle tag that we're searching for
     # Let's pretend everyone's in the EU realm
     @commands.command(name="owpc")
     async def owpc(self, battle_tag):
-        self.overwatch_info(self, battle_tag.replace("#","-"), "eu", "pc")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "pc")
     @commands.command(name="owps4")
     async def owpsn(self,battle_tag):
-        self.overwatch_info(self, battle_tag.replace("#","-"), "eu", "psn")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "psn")
     @commands.command(name="owxbx")
     async def owxbl(self,battle_tag):
-        self.overwatch_info(self, battle_tag.replace("#","-"), "eu", "xbl")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "xbl")
 
     async def overwatch_info(self, battle_tag, game_region, game_platform):
-        self.bot.say("I am looking up {0}. Please give me a moment")
+        self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
         urls = [
             self.profile_endpoint.format(self.base_api_location, game_platform, game_region, battle_tag),
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"competitive"),
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"quickplay"),
         ]
 
-        requests = (grequests.get(u) for u in urls)
-        response = grequests.map(requests)
+        requests  = (grequests.get(u) for u in urls)
+        responses = grequests.map(requests)
 
         user_data     = responses[0].json()
         comp_heroes   = responses[1].json()
