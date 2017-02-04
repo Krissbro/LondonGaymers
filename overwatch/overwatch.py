@@ -26,13 +26,13 @@ class Overwatch:
     # Let's pretend everyone's in the EU realm
     @commands.command(name="owpc")
     async def owpc(self, battle_tag):
-        self.overwatch_info(battle_tag.replace("#","-").capitalize(), "eu", "pc")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "pc")
     @commands.command(name="owps4")
     async def owpsn(self,battle_tag):
-        self.overwatch_info(battle_tag.replace("#","-").capitalize(), "eu", "psn")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "psn")
     @commands.command(name="owxbx")
     async def owxbl(self,battle_tag):
-        self.overwatch_info(battle_tag.replace("#","-").capitalize(), "eu", "xbl")
+        self.overwatch_info(self, battle_tag.replace("#","-").capitalize(), "eu", "xbl")
 
     async def overwatch_info(self, battle_tag, game_region, game_platform):
         self.bot.say("I am looking up {0}. Please give me a moment".format(battle_tag))
