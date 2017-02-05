@@ -5,7 +5,6 @@
 from   discord.ext import commands
 import aiohttp
 import math
-
 try: #check if grequests is installed
     import grequests
     grequestsAvailable = True
@@ -41,9 +40,12 @@ class Overwatch:
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"competitive"),
             self.heroes_endpoint.format(self.base_api_location , game_platform, game_region, battle_tag,"quickplay"),
         ]
-
-        requests  = (grequests.get(u) for u in urls)
+        requests  = (grequests.get(u, timeout=30) for u in urls)
         responses = grequests.map(requests)
+
+        if None in responses:
+            await self.bot.say("Things were running slow and I couldn't get the data in time. Sorry :(")
+            return
         if responses[0].status_code == 200 and responses[1].status_code == 200 and responses[2].status_code == 200:
             user_data     = responses[0].json()
             comp_heroes   = responses[1].json()
