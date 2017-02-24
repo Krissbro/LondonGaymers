@@ -23,7 +23,7 @@ class Admin:
         self._settable_roles = self._settings.get("ROLES", {})
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
+    @checks.admin_or_permissions(administrator=True)
     async def sudo(self, ctx, user: discord.Member, *, command):
         """Runs the [command] as if [user] had run it. DON'T ADD A PREFIX
         """
