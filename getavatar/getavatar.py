@@ -18,7 +18,7 @@ class Avatar:
 
         avatar = user.avatar_url .strip("webp?size=1024")
         if "gif" not in avatar await self.bot.say(":eyes: {} | {}'s Avatar is : {}jpg".format(author.mention, user.mention, avatar))
-        else await self.bot.say(":eyes: [] | {}'s Avatar is : {}".format(author.mention, user.mention, avatar))
+        await self.bot.say(":eyes: [] | {}'s Avatar is : {}".format(author.mention, user.mention, avatar))
 
 
 def setup(bot):
