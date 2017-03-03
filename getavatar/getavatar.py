@@ -15,11 +15,10 @@ class Avatar:
 
         if not user:
             user = author
-        if "gif" not in user.avatar.url:
             avatar = user.avatar_url .strip("webp?size=1024")
+        if "gif" not in user.avatar.url:
             await self.bot.say(":eyes: {} | {}'s Avatar is : {}jpg".format(author.mention, user.mention, avatar))
         else:
-            avatar = user.avatar_url .strip("webp?size=1024")
             await self.bot.say(":eyes: {} | {}'s Avatar is : {}".format(author.mention, user.mention, avatar))
 
 def setup(bot):
