@@ -50,7 +50,7 @@ class Utility:
         channel = ctx.message.channel
         await self.bot.send_typing(ctx.message.channel)
         therole = discord.utils.find(lambda r: r.name.lower() == rolename.lower(), ctx.message.server.roles)
-        if therole is not None and len([m for m in server.members if therole in m.roles]) < 50:
+        if therole is not None and len([m for m in server.members if therole in m.roles]) < 100:
             lolies = await self.bot.say(" :raised_hand: Wait up Getting Names :bookmark: ")
             await asyncio.sleep(1) #taking time to retrieve the names
             server = ctx.message.server
@@ -59,7 +59,7 @@ class Utility:
             member += " \n+".join(m.display_name for m in server.members if therole in m.roles)
             member += "```"
             await self.bot.edit_message(lolies, member)
-        elif len([m for m in server.members if therole in m.roles]) > 50:
+        elif len([m for m in server.members if therole in m.roles]) > 100:
             awaiter = await self.bot.say("Getting Member Names")
             await asyncio.sleep(1)
             await self.bot.edit_message(awaiter, " :raised_hand: Woah way too many people in **{0}** Role, **{1}** Members found\n".format(rolename,  len([m for m in server.members if therole in m.roles])))
