@@ -112,7 +112,8 @@ class Tweets():
                 next_page = page - 1
             return await self.tweet_menu(ctx, post_list, message=message,
                                          page=next_page, timeout=timeout)
-
+        else:
+            return await\
 
     @commands.group(pass_context=True, no_pm=True, name='tweets')
     async def _tweets(self, ctx):
