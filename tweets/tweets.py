@@ -86,7 +86,7 @@ class Tweets():
             message = await self.bot.edit_message(message, embed=em)
         react = await self.bot.wait_for_reaction(
             message=message, user=ctx.message.author, timeout=timeout,
-            emoji=["➡", "❌"]
+            emoji=["➡", "⬅"]
         )
         if react is None:
             await self.bot.remove_reaction(message, "⬅", self.bot.user)
