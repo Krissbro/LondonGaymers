@@ -102,7 +102,7 @@ class Tweets():
                 next_page = page + 1
             return await self.tweet_menu(ctx, post_list, message=message,
                                          page=next_page, timeout=timeout)
-        else react == "back":
+        elif react == "back":
             next_page = 0
             if page == 0:
                 next_page = len(post_list) - 1  # Loop around to the last item
@@ -110,6 +110,8 @@ class Tweets():
                 next_page = page - 1
             return await self.tweet_menu(ctx, post_list, message=message,
                                          page=next_page, timeout=timeout)
+        else:
+            return
 
     @commands.group(pass_context=True, no_pm=True, name='tweets')
     async def _tweets(self, ctx):
