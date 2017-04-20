@@ -28,7 +28,6 @@ class Spoiler:
         self.bg_color = 20
 
     @commands.command(pass_context=True, no_pm=True)
-    @checks.mod_or_permissions(administrator=True)
     async def spoiler(self, ctx, *text: str):
         """Use an animated gif to hide spoiler text"""
 
