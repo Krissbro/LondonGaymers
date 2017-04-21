@@ -85,8 +85,8 @@ class Wat:
                         and not author == message.author\
                         and not pattern.fullmatch(content):
                     emoji = "\N{CHEERING MEGAPHONE}"
-                    msg = "{0} said, **{1}   {2}**".format(name, emoji,
-                                                                 content)
+                    msg = "WAT? :wat: {0} said, **{1}   {2}** {3}".format(name, emoji,
+                                                                 content, author.mention)
                     await self.bot.send_message(message.channel, msg)
                     break
 
